@@ -415,6 +415,7 @@ async fn actual_main(cli_app: Ferium) -> Result<()> {
 
     Ok(())
 }
+}
 
 /// Get the active profile with error handling
 fn get_active_profile(config: &mut Config) -> Result<&mut Profile> {
