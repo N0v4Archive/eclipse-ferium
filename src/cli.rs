@@ -92,6 +92,13 @@ pub enum SubCommands {
     },
     /// Download and install the latest compatible version of your mods
     Upgrade,
+    #[clap(about("Scan profile for mods"))]
+    Scan {
+        #[clap(long)]
+        #[clap(arg_enum)]
+        #[clap(help("Preferred platform to scan mods from (default: modrinth)"))]
+        preferred_platform: Option<libium::config::structs::ModPlatform>
+    }
 }
 
 #[derive(Subcommand)]
