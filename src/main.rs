@@ -331,6 +331,16 @@ async fn actual_main(cli_app: Ferium) -> Result<()> {
                 )
                 .await?;
             }
+            SubCommands::Scan { preferred_platform } => {
+            check_internet().await?;
+            let profile = get_active_profile(&mut config)?;
+            subcommands::scan(
+                modrinth,
+                curseforge,
+                profile,
+                preferred_platform.unwrap_or(libium::config::structs::ModPlatform::Modrinth),
+            )
+            .await?;
         },
         SubCommands::Profile { subcommand } => match subcommand {
             ProfileSubCommands::Configure {
